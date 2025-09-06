@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Sidebar } from "@/components/ui/Sidebar";
 import { tools } from "@/lib/tools";
@@ -10,7 +10,6 @@ interface MainLayoutProps {
 }
 
 export function MainLayout({ children }: MainLayoutProps) {
-  const router = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -21,11 +20,6 @@ export function MainLayout({ children }: MainLayoutProps) {
   };
 
   const selectedTool = getCurrentTool();
-
-  const handleToolSelect = (toolId: string) => {
-    router.push(`/tool/${toolId}`);
-    setSidebarOpen(false);
-  };
 
   // 現在のページタイトルを取得
   const getPageTitle = () => {
@@ -40,7 +34,6 @@ export function MainLayout({ children }: MainLayoutProps) {
       <Sidebar
         tools={Object.values(tools)}
         selectedTool={selectedTool}
-        onToolSelect={handleToolSelect}
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
