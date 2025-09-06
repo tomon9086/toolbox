@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Tool } from "@/types/tools";
 
 interface SidebarProps {
@@ -40,9 +41,12 @@ export function Sidebar({
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <Link
+              href="/"
+              className="text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            >
               Toolbox
-            </h2>
+            </Link>
             {/* モバイル用クローズボタン */}
             <button
               type="button"
