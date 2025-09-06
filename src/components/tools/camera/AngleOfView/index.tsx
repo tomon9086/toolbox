@@ -78,7 +78,7 @@ export function CameraAngleOfViewCalculator() {
       : undefined;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 max-w-7xl mx-auto">
       {/* センサーサイズ・焦点距離入力 */}
       <Card title="センサーサイズ・焦点距離">
         <div className="space-y-4">
@@ -105,7 +105,7 @@ export function CameraAngleOfViewCalculator() {
             </select>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* センサー幅 */}
             <Input
               disabled={selectedPreset !== CUSTOM_SENSOR_SIZE}
@@ -131,7 +131,7 @@ export function CameraAngleOfViewCalculator() {
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* 焦点距離 */}
             <Input
               label="焦点距離"
@@ -149,28 +149,28 @@ export function CameraAngleOfViewCalculator() {
       {/* 画角の計算結果 */}
       {angleOnlyOutput && (
         <Card title="画角">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
                 {angleOnlyOutput.horizontalAngle}°
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 水平画角
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+              <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">
                 {angleOnlyOutput.verticalAngle}°
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 垂直画角
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+              <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
                 {angleOnlyOutput.diagonalAngle}°
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 対角画角
               </div>
             </div>
@@ -196,28 +196,28 @@ export function CameraAngleOfViewCalculator() {
       {/* 撮影範囲の計算結果 */}
       {output && (
         <Card title="撮影範囲">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <div className="text-xl sm:text-2xl font-bold text-blue-600 dark:text-blue-400">
                 {output.horizontalRange} m
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 水平撮影範囲
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600 dark:text-green-400">
+              <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">
                 {output.verticalRange} m
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 垂直撮影範囲
               </div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+              <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
                 {output.diagonalRange} m
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400">
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
                 対角撮影範囲
               </div>
             </div>

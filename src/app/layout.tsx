@@ -16,6 +16,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Toolbox",
   description: "便利なツール集",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({

@@ -42,13 +42,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
           {unit && (
-            <span className="absolute right-3 top-2 text-sm text-gray-500 dark:text-gray-400">
+            <span className="absolute right-3 top-2 text-xs sm:text-sm text-gray-500 dark:text-gray-400 pointer-events-none">
               {unit}
             </span>
           )}
         </div>
         {error && (
-          <span className="text-sm text-red-600 dark:text-red-400">
+          <span className="text-xs sm:text-sm text-red-600 dark:text-red-400">
             {error}
           </span>
         )}
