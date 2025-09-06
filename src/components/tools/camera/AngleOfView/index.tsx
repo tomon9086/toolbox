@@ -68,8 +68,8 @@ export function CameraAngleOfViewCalculator() {
   // 画角のみの計算（距離を除く）
   const angleOnlyOutput =
     input.focalLength > 0 && input.sensorWidth > 0 && input.sensorHeight > 0
-      ? calculateCameraAngles({ ...input, distance: 1 }) // 距離1mで計算
-      : null;
+      ? calculateCameraAngles(input)
+      : undefined;
 
   return (
     <div className="space-y-6">
