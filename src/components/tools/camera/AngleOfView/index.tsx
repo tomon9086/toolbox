@@ -9,6 +9,8 @@ import {
 } from "@/lib/calculations/camera";
 import type { CameraInput, CameraOutput } from "@/types/tools";
 
+const CUSTOM_SENSOR_SIZE = "custom";
+
 export function CameraAngleOfViewCalculator() {
   const [input, setInput] = useState<CameraInput>({
     focalLength: 50,
@@ -74,13 +76,13 @@ export function CameraAngleOfViewCalculator() {
       {/* センサーサイズ・焦点距離入力 */}
       <Card title="センサーサイズ・焦点距離">
         <div className="space-y-4">
-          {/* センサーサイズプリセット */}
+          {/* センサーサイズ */}
           <div>
             <label
               htmlFor="sensor-preset"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
-              センサーサイズプリセット
+              センサーサイズ
             </label>
             <select
               id="sensor-preset"
@@ -93,24 +95,14 @@ export function CameraAngleOfViewCalculator() {
                   {preset}
                 </option>
               ))}
-              <option value="custom">カスタム</option>
+              <option value={CUSTOM_SENSOR_SIZE}>カスタム</option>
             </select>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* 焦点距離 */}
-            <Input
-              label="焦点距離"
-              unit="mm"
-              type="number"
-              value={input.focalLength}
-              onChange={(e) => updateInput("focalLength", e.target.value)}
-              min="1"
-              step="0.1"
-            />
-
             {/* センサー幅 */}
             <Input
+              disabled={selectedPreset !== CUSTOM_SENSOR_SIZE}
               label="センサー幅"
               unit="mm"
               type="number"
@@ -122,12 +114,26 @@ export function CameraAngleOfViewCalculator() {
 
             {/* センサー高さ */}
             <Input
+              disabled={selectedPreset !== CUSTOM_SENSOR_SIZE}
               label="センサー高さ"
               unit="mm"
               type="number"
               value={input.sensorHeight}
               onChange={(e) => updateInput("sensorHeight", e.target.value)}
               min="0.1"
+              step="0.1"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* 焦点距離 */}
+            <Input
+              label="焦点距離"
+              unit="mm"
+              type="number"
+              value={input.focalLength}
+              onChange={(e) => updateInput("focalLength", e.target.value)}
+              min="1"
               step="0.1"
             />
           </div>

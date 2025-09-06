@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import type { InputHTMLAttributes } from "react";
 import { forwardRef, useMemo } from "react";
 
@@ -28,13 +29,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             suppressHydrationWarning
             id={inputId}
-            className={`
-              w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
-              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-              dark:bg-gray-800 dark:border-gray-600 dark:text-white
-              ${error ? "border-red-500 focus:ring-red-500 focus:border-red-500" : ""}
-              ${className}
-            `}
+            className={clsx(
+              "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm",
+              "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
+              "disabled:opacity-50",
+              "dark:bg-gray-800 dark:border-gray-600 dark:text-white",
+              {
+                "border-red-500 focus:ring-red-500 focus:border-red-500": error,
+              },
+              className,
+            )}
             {...props}
           />
           {unit && (
