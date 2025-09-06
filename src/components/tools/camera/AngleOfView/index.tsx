@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { Input } from "@/components/ui/Input";
 import {
@@ -12,15 +12,19 @@ import type { CameraInput, CameraOutput } from "@/types/tools";
 const CUSTOM_SENSOR_SIZE = "custom";
 
 export function CameraAngleOfViewCalculator() {
+  const defaultPreset = useMemo(() => sensorPresets.fullsize, []);
+
   const [input, setInput] = useState<CameraInput>({
     focalLength: 50,
-    sensorWidth: 36,
-    sensorHeight: 24,
+    sensorWidth: defaultPreset.dimension.width,
+    sensorHeight: defaultPreset.dimension.height,
     distance: 10,
   });
 
-  const [output, setOutput] = useState<CameraOutput | null>(null);
-  const [selectedPreset, setSelectedPreset] = useState<string>("フルフレーム");
+  const [output, setOutput] = useState<CameraOutput>();
+  const [selectedPreset, setSelectedPreset] = useState<string>(
+    defaultPreset.name,
+  );
 
   // 計算を実行
   useEffect(() => {
@@ -34,20 +38,22 @@ export function CameraAngleOfViewCalculator() {
         const result = calculateCameraAngles(input);
         setOutput(result);
       } else {
-        setOutput(null);
+        setOutput(undefined);
       }
     } catch (error) {
       console.error("計算エラー:", error);
-      setOutput(null);
+      setOutput(undefined);
     }
   }, [input]);
 
   // プリセット変更時の処理
   const handlePresetChange = (preset: string) => {
+    console.log("プリセット変更:", preset);
+
     setSelectedPreset(preset);
     if (preset in sensorPresets) {
       const { width, height } =
-        sensorPresets[preset as keyof typeof sensorPresets];
+        sensorPresets[preset as keyof typeof sensorPresets].dimension;
       setInput((prev) => ({
         ...prev,
         sensorWidth: width,
@@ -90,9 +96,9 @@ export function CameraAngleOfViewCalculator() {
               onChange={(e) => handlePresetChange(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white"
             >
-              {Object.keys(sensorPresets).map((preset) => (
-                <option key={preset} value={preset}>
-                  {preset}
+              {Object.values(sensorPresets).map((preset) => (
+                <option key={preset.name} value={preset.key}>
+                  {preset.name}
                 </option>
               ))}
               <option value={CUSTOM_SENSOR_SIZE}>カスタム</option>

@@ -47,10 +47,34 @@ export function calculateCameraAngles(input: CameraInput): CameraOutput {
  * 一般的なセンサーサイズのプリセット
  */
 export const sensorPresets = {
-  "35mm フルサイズ": { width: 36, height: 24 },
-  "APS-C (Canon)": { width: 22.3, height: 14.9 },
-  "APS-C (Nikon/Sony)": { width: 23.5, height: 15.6 },
-  マイクロフォーサーズ: { width: 17.3, height: 13 },
-  "1インチ": { width: 13.2, height: 8.8 },
-  "1/1.7インチ": { width: 7.6, height: 5.7 },
+  fullsize: {
+    key: "fullsize",
+    name: "35mm フルサイズ",
+    dimension: { width: 36, height: 24 },
+  },
+  apscCanon: {
+    key: "apscCanon",
+    name: "APS-C (Canon)",
+    dimension: { width: 22.3, height: 14.9 },
+  },
+  apscNikonSony: {
+    key: "apscNikonSony",
+    name: "APS-C (Nikon/Sony)",
+    dimension: { width: 23.5, height: 15.6 },
+  },
+  microFourThirds: {
+    key: "microFourThirds",
+    name: "マイクロフォーサーズ",
+    dimension: { width: 17.3, height: 13 },
+  },
+  oneInch: {
+    key: "oneInch",
+    name: "1インチ",
+    dimension: { width: 13.2, height: 8.8 },
+  },
+  oneOverOnePointSevenInch: {
+    key: "oneOverOnePointSevenInch",
+    name: "1/1.7インチ",
+    dimension: { width: 7.6, height: 5.7 },
+  },
 } as const;
