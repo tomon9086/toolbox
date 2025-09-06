@@ -1,3 +1,5 @@
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import Link from "next/link";
 import type { Tool } from "@/types/tools";
@@ -35,7 +37,7 @@ export function Sidebar({
           border-r border-gray-200 dark:border-gray-700 h-full
           transform transition-transform duration-300 ease-in-out
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
-          md:translate-x-0
+          md:translate-x-0 flex flex-col
         `}
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
@@ -70,7 +72,7 @@ export function Sidebar({
             </button>
           </div>
         </div>
-        <nav className="p-2">
+        <nav className="p-2 flex-1">
           <ul className="space-y-1">
             {tools.map((tool) => (
               <li key={tool.id}>
@@ -101,6 +103,19 @@ export function Sidebar({
             ))}
           </ul>
         </nav>
+
+        {/* フッタ */}
+        <div className="p-4 border-t border-gray-200 dark:border-gray-700 mt-auto">
+          <a
+            href="https://github.com/tomon9086/toolbox"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+          >
+            <FontAwesomeIcon icon={faGithub} className="w-4 h-4" />
+            <span>GitHub</span>
+          </a>
+        </div>
       </div>
     </>
   );
