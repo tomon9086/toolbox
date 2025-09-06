@@ -11,7 +11,7 @@ import type { CameraInput, CameraOutput } from "@/types/tools";
 
 const CUSTOM_SENSOR_SIZE = "custom";
 
-export function CameraAngleOfViewCalculator() {
+export default function CameraAngleOfViewPage() {
   const defaultPreset = useMemo(() => sensorPresets.fullsize, []);
 
   const [input, setInput] = useState<CameraInput>({
