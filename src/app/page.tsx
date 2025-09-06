@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CameraCalculator } from "@/components/tools/CameraCalculator";
+import { CameraAngleOfViewCalculator } from "@/components/tools/camera/AngleOfView";
 import { Sidebar } from "@/components/ui/Sidebar";
 import type { Tool } from "@/types/tools";
 
@@ -22,7 +22,7 @@ export default function Home() {
   const renderTool = () => {
     switch (selectedTool) {
       case "camera/angle-of-view":
-        return <CameraCalculator />;
+        return <CameraAngleOfViewCalculator />;
       default:
         return (
           <div className="flex items-center justify-center h-full">

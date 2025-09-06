@@ -9,7 +9,7 @@ import {
 } from "@/lib/calculations/camera";
 import type { CameraInput, CameraOutput } from "@/types/tools";
 
-export function CameraCalculator() {
+export function CameraAngleOfViewCalculator() {
   const [input, setInput] = useState<CameraInput>({
     focalLength: 50,
     sensorWidth: 36,
