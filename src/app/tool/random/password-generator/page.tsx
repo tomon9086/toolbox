@@ -201,7 +201,7 @@ export default function PasswordGeneratorPage() {
 
   return (
     <div className="container mx-auto p-6 max-w-md">
-      <Card title="パスワード生成器">
+      <Card>
         <div>
           <label htmlFor="preset" className="block text-sm font-medium mb-2">
             プリセット:
