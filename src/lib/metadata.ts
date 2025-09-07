@@ -23,7 +23,7 @@ export function generateToolMetadata(
     twitterCardType === "summary" ? ogImageSquareUrl : ogImageLargeUrl;
 
   return {
-    title: `${tool.name} - Toolbox`,
+    title: tool.name,
     description: tool.description,
     openGraph: {
       title: `${tool.name} - Toolbox`,
