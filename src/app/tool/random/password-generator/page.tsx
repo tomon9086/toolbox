@@ -258,12 +258,9 @@ export default function PasswordGeneratorPage() {
           {password && (
             <div className="mt-4">
               <div className="flex">
-                <input
-                  type="text"
-                  value={password}
-                  readOnly
-                  className="flex-1 p-2 border rounded-l"
-                />
+                <div className="flex-1 p-2 border rounded-l font-mono select-all">
+                  {password}
+                </div>
                 <button
                   type="button"
                   onClick={onCopyButtonClick}
