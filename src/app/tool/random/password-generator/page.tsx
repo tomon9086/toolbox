@@ -261,7 +261,7 @@ export default function PasswordGeneratorPage() {
                 <button
                   type="button"
                   onClick={onCopyButtonClick}
-                  className="bg-gray-500 text-white px-4 rounded-r hover:bg-gray-600"
+                  className="bg-gray-500 text-white px-4 rounded-r hover:bg-gray-600 cursor-pointer"
                 >
                   コピー
                 </button>
