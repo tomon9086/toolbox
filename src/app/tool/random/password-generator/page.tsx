@@ -1,5 +1,7 @@
 "use client";
 
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useEffect, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { copyToClipboard } from "@/utils/clipboard";
@@ -163,7 +165,7 @@ export default function PasswordGeneratorPage() {
     copyToClipboard(password);
   }, [password]);
 
-  useEffect(() => {
+  const onGeneratePasswordButtonClick = useCallback(() => {
     let charset = "";
     if (selectedCharsets[CHARSET_KEY.uppercase])
       charset += CHARSET[CHARSET_KEY.uppercase];
@@ -186,6 +188,10 @@ export default function PasswordGeneratorPage() {
     const newPassword = generatePassword(charset, length);
     setPassword(newPassword);
   }, [length, selectedCharsets]);
+
+  useEffect(() => {
+    onGeneratePasswordButtonClick();
+  }, [onGeneratePasswordButtonClick]);
 
   return (
     <div className="container mx-auto p-6 max-w-md">
@@ -258,6 +264,17 @@ export default function PasswordGeneratorPage() {
                   className="bg-gray-500 text-white px-4 rounded-r hover:bg-gray-600"
                 >
                   コピー
+                </button>
+              </div>
+              <div className="flex justify-center mt-4">
+                <button
+                  onClick={onGeneratePasswordButtonClick}
+                  type="button"
+                  className="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 flex items-center gap-2 cursor-pointer"
+                  title="再生成"
+                >
+                  <FontAwesomeIcon icon={faRotateRight} />
+                  再生成
                 </button>
               </div>
             </div>
