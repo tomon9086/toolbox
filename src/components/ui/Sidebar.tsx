@@ -2,6 +2,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import clsx from "clsx";
 import Link from "next/link";
+import { useCallback } from "react";
 import type { Tool } from "@/types/tools";
 
 interface SidebarProps {
@@ -17,6 +18,10 @@ export function Sidebar({
   sidebarOpen,
   setSidebarOpen,
 }: SidebarProps) {
+  const closeSidebar = useCallback(() => {
+    setSidebarOpen(false);
+  }, [setSidebarOpen]);
+
   return (
     <>
       {/* オーバーレイ（モバイル用） */}
@@ -24,7 +29,7 @@ export function Sidebar({
         <button
           type="button"
           className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-          onClick={() => setSidebarOpen(false)}
+          onClick={closeSidebar}
           aria-label="サイドバーを閉じる"
         />
       )}
@@ -51,7 +56,7 @@ export function Sidebar({
             {/* モバイル用クローズボタン */}
             <button
               type="button"
-              onClick={() => setSidebarOpen(false)}
+              onClick={closeSidebar}
               className="md:hidden p-1 rounded-md text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700"
               aria-label="メニューを閉じる"
             >
@@ -76,7 +81,7 @@ export function Sidebar({
           <ul className="space-y-1">
             {tools.map((tool) => (
               <li key={tool.id}>
-                <Link href={`/tool/${tool.id}`}>
+                <Link href={`/tool/${tool.id}`} onClick={closeSidebar}>
                   <button
                     type="button"
                     className={clsx(
