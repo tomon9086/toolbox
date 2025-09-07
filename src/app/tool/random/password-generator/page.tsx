@@ -3,6 +3,7 @@
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { Card } from "@/components/ui/Card";
 import { copyToClipboard } from "@/utils/clipboard";
 
@@ -161,8 +162,13 @@ export default function PasswordGeneratorPage() {
     [],
   );
 
-  const onCopyButtonClick = useCallback(() => {
-    copyToClipboard(password);
+  const onCopyButtonClick = useCallback(async () => {
+    const result = await copyToClipboard(password);
+    if (result) {
+      toast.success("パスワードをコピーしました");
+    } else {
+      toast.error("コピーに失敗しました");
+    }
   }, [password]);
 
   const onGeneratePasswordButtonClick = useCallback(() => {

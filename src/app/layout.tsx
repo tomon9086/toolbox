@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
+import { ToastContainer } from "react-toastify";
 import { MainLayout } from "@/components/layout/MainLayout";
+import "react-toastify/dist/ReactToastify.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +33,17 @@ export default function RootLayout({
         className={clsx(geistSans.variable, geistMono.variable, "antialiased")}
       >
         <MainLayout>{children}</MainLayout>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </body>
     </html>
   );
