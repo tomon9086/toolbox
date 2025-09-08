@@ -97,7 +97,7 @@ const generatePassword = (charset: string, passwordLength: number) => {
   return result;
 };
 
-export default function PasswordGeneratorPage() {
+export default function RandomPasswordGeneratorTool() {
   const [password, setPassword] = useState("");
   const [selectedPresetKey, setSelectedPresetKey] = useState<PresetKey>(
     PRESET_KEY.password,
